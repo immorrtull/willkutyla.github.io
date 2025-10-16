@@ -1,102 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Will Kutyla | Blacksmith</title>
-  <meta name="Will Kutyla" content="Portfolio">
-
-  <!-- Basic styling -->
   <style>
     :root {
-      --bg: #fafafa;
-      --fg: #111;
-      --accent: #2563eb;
-      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --bg: #faf8f6;
+      --text: #111;
+      --muted: #666;
+      --card: #fff;
+      --maxw: 1000px;
+      --gap: 20px;
     }
 
-    * {
+    body, html {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
     }
 
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: var(--font);
-      line-height: 1.6;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 20px;
     }
 
     header {
-      text-align: center;
-      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: var(--accent);
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 12px;
+    }
+    .logo-text {
+      line-height: 1.2;
+    }
+    .logo-text h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+    .logo-text span {
+      font-size: 14px;
+      color: var(--muted);
     }
 
-    section {
-      max-width: 700px;
-      margin-bottom: 2rem;
-      text-align: center;
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 16px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Hero / Slideshow */
+    .hero {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .slides {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      height: 400px;
+    }
+    .slide {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-text {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(255,255,255,0.9);
+      padding: 18px;
+      border-radius: 6px;
+      max-width: 60%;
+    }
+    .hero-text h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .hero-text p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+    .hero-text a.cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 16px;
+      border: 1px solid var(--text);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    /* Main + Sidebar */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 32px;
+    }
+    @media (max-width: 800px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .hero-text {
+        position: static;
+        background: transparent;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+    }
+
+    .story img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin: 16px 0;
+    }
+
+    .sidebar .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sidebar .contact h3 {
+      margin: 0 0 8px;
+    }
+    .sidebar .contact a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .sidebar .socials img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
     }
 
     footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 0.75rem 1.5rem;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.2s;
-    }
-
-    button:hover {
-      background: #1e40af;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Will Kutyla | Blacksmith</h1>
-  </header>
 
-  <section id="about">
-    <h2>This Site Is Under Construction.</h2>
-  </section>
+  <div class="container">
+    <header>
+      <a href="#" class="logo">
+        <img src="images/placeholder.jpg" alt="Logo">
+        <div class="logo-text">
+          <h1>WILLIAM KUTYLA</h1>
+          <span>Hand-Crafted. Architectural Ironwork.</span>
+        </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <section id="projects">
-  </section>
+    <section class="hero">
+      <div class="slides">
+        <div class="slide active">
+          <img src="images/placeholder.jpg" alt="Slide 1">
+        </div>
+        <div class="slide">
+          <img src="images/placeholder.jpg" alt="Slide 2">
+        </div>
+        <div class="slide">
+          <img src="images/placeholder.jpg" alt="Slide 3">
+        </div>
+      </div>
+      <div class="hero-text">
+        <a class="cta" href="#gallery">Gallery</a>
+      </div>
+    </section>
 
-  <section id="contact">
-  </section>
+    <div class="layout">
+      <main>
+        <section class="card story" id="story">
+          <h2>Story</h2>
+          <img src="images/placeholder.jpg" alt="At forge">
+        </section>
 
-  <footer>
-  </footer>
+        <section class="card" id="gallery">
+          <h2>Gallery</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 12px; margin-top: 12px;">
+            <img src="images/placeholder.jpg" alt="Gallery image 1" style="width:100%; height:120px; object-fit:cover; border-radius:6px;">
+            <img src="images/placeholder.jpg" alt="Gallery image 2" style="width:100%; height:120px; object-fit:cover; border-radius:6px;">
+            <img src="images/placeholder.jpg" alt="Gallery image 3" style="width:100%; height:120px; object-fit:cover; border-radius:6px;">
+            <img src="images/placeholder.jpg" alt="Gallery image 4" style="width:100%; height:120px; object-fit:cover; border-radius:6px;">
+          </div>
+        </section>
+      </main>
+
+      <aside class="sidebar">
+        <div class="card contact">
+          <h3>Contact</h3>
+          <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+          <div class="socials">
+            <a href="#"><img src="images/instagram-icon.png" alt="Instagram"></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      © 2025 Will Jansen Tools. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Simple slideshow logic
+    (function(){
+      let idx = 0;
+      const slides = document.querySelectorAll('.slide');
+      function goNext(){
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      }
+      setInterval(goNext, 4000);
+    })();
+  </script>
 
 </body>
 </html>
