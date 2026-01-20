@@ -1,9 +1,10 @@
 
  :root {
-      --bg: #faf8f6;
-      --text: #111;
-      --muted: #666;
-      --card: #fff;
+      --bg:#629f74;
+;
+      --text: #152614;
+      --muted: #152614;
+      --card: #152614;
       --maxw: 1000px;
       --gap: 20px;
     }
@@ -13,7 +14,15 @@
       padding: 1vh;
       background: var(--bg);
       color: var(--text);
-      font-family: Arial, sans-serif;
+      font-family: "EB Garamond", sans-serif;
+    }
+
+    .profile img {
+    width: 50%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 16px 0;
     }
 
     .container {
@@ -47,12 +56,28 @@
     }
     .logo-text h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 6vw;
       letter-spacing: 1px;
+      font-weight: 520;
+      font-family: "EB Garamond", sans-serif;
     }
     .logo-text span {
       font-size: 14px;
       color: var(--muted);
+    }
+
+     .section-title {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .section-title h1 {
+      margin: 0;
+      font-size: 5vw;
+      letter-spacing: 1px;
     }
 
     nav ul {
@@ -69,10 +94,7 @@
     }
 
     /* Hero / Slideshow */
-    .hero {
-      position: relative;
-      margin-bottom: 36px;
-    }
+
     .slides {
       position: relative;
       overflow: hidden;
@@ -94,33 +116,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-    .hero-text {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      background: rgba(255,255,255,0.9);
-      padding: 18px;
-      border-radius: 6px;
-      max-width: 60%;
-    }
-    .hero-text h2 {
-      margin: 0;
-      font-size: 28px;
-    }
-    .hero-text p {
-      margin: 8px 0 0;
-      color: var(--muted);
-    }
-    .hero-text a.cta {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 16px;
-      border: 1px solid var(--text);
-      border-radius: 6px;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: bold;
     }
 
     /* Main + Sidebar */
@@ -186,5 +181,5 @@
       font-size: 14px;
       margin-top: 40px;
       padding-top: 20px;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #152614;
     }
